@@ -1,3 +1,4 @@
+import os
 import random
 import json
 import torch
@@ -8,13 +9,14 @@ from os.path import join, dirname, realpath
 from flask import Flask, request, jsonify
 from utils.nltk_utils import tokenize, bag_of_words
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') # for local machine
+device = torch.device('cpu')  # for gcp
 
 with open(join(dirname(realpath(__file__)), 'data/intents.json'), 'rb') as f:
     intents = json.load(f)
 
-FILE = join(dirname(realpath(__file__)), 'data/data.pth')
-data = torch.load(FILE)
+FILE = join(dirname(realpath(__file__)), 'data.pth')
+data = torch.load(FILE, map_location='cpu')
 
 input_size = data["input_size"]
 hidden_size = data["hidden_size"]
@@ -69,4 +71,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=(os.environ.get("PORT", 8080)))

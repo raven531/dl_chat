@@ -10,6 +10,7 @@ if __name__ == "__main__":
             print("End Chat~~")
             break
 
-        resp = requests.post(url="http://127.0.0.1:5000/", data={"sentence": sentence})
+        # resp = requests.post(url="http://127.0.0.1:5000/", data={"sentence": sentence})
+        resp = requests.post(url="https://getchat-imfl6ebzya-de.a.run.app", data={"sentence": sentence})
         json_text = resp.json()
         print(f'{bot_name}: {json_text.get("message")}')
