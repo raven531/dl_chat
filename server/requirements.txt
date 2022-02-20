@@ -1,0 +1,22 @@
+certifi==2021.5.30
+click==8.0.1
+colorama==0.4.4
+Flask==2.0.1
+itsdangerous==2.0.1
+Jinja2==3.0.1
+joblib==1.0.1
+MarkupSafe==2.0.1
+nltk==3.6.2
+numpy
+olefile==0.46
+Pillow
+regex==2021.4.4
+six
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.7.1+cpu
+torchvision==0.8.2+cpu
+tqdm==4.61.1
+typing-extensions
+Werkzeug==2.0.1
+wincertstore==0.2
+gunicorn==19.3.0
